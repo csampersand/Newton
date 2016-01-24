@@ -1,14 +1,26 @@
 angular.module('tasks.list', [])
 
-.controller('TasksCtrl', function($scope, $ionicModal) {
+.controller('TasksCtrl', function($scope, $ionicModal, $localstorage) {
+
+
   $scope.tasks = [
     {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
   ];
 
+  var fish = function(){
+    var user = $localstorage.getObject('storage');
+    $scope.tasks = user.tasks;
+
+    console.log($localstorage.getObject('storage'));
+  }
+
+  fish();
+  
+
   // toggle modal being complete
   $scope.toggleComplete = function(task) {
       task.complete = !task.complete;
-  }
+  };
 
 
   // Create and load the Modal
@@ -32,6 +44,12 @@ angular.module('tasks.list', [])
     task.title = "";
     task.due = "";
     task.priority = false;
+    $localstorage.setObject('storage', {tasks: $scope.tasks});
+  };
+
+  $scope.removeTask = function(index) {
+    $scope.tasks.splice(index, 1);
+     $localstorage.setObject('storage', {tasks: $scope.tasks});
   };
 
   // Open our new task modal
