@@ -9736,10 +9736,18 @@ a.button {
 
 .task-status-complete-true .task-prop-title {
   text-decoration: line-through;
-  color: grey; }
+  color: #cccccc; }
 
-.task-status-complete-false .task-prop-due {
+.task-status-complete-false.task-status-important-true .task-prop-due {
   color: #ffc900; }
+
+.task-button-edit {
+  background-color: #cccccc;
+  color: #fff; }
+
+.task-button-delete {
+  background-color: #ef473a;
+  color: #fff; }
 
 .task-prop-due .task-prop-important {
   padding-left: 5px; }
@@ -9787,6 +9795,6 @@ a.button {
   padding-right: 7px; }
 
 #emptyTask {
-  color: grey;
+  color: #cccccc;
   vertical-align: center;
   text-align: center; }

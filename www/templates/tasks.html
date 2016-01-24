@@ -4,7 +4,7 @@
     <h5 id="emptyTask" ng-hide="tasks.length">You have no tasks to complete.</h5>
 
     <ion-list>      
-      <ion-item ng-repeat="task in tasks track by $index" ng-click="editTask(task)">
+      <ion-item ng-repeat="task in tasks track by $index">
         <div class="task-status-complete-{{task.complete}} task-status-important-{{task.important}}">
           <i class="task-prop-complete {{task.complete ? 'ion-ios-checkmark' : 'ion-ios-circle-outline' }}" ng-click="toggleComplete(task)" ></i>
           <span class="task-prop-title">{{task.title}}</span>
@@ -12,7 +12,8 @@
             {{task.due}}
             <i class="ion-alert-circled task-prop-important" ng-show="task.important"></i>
           </span>
-          <ion-option-button class="ion-minus-circled assertive" ng-click="removeTask($index)"></ion-delete-button>
+          <ion-option-button class="task-button-delete" ng-click="removeTask($index)">Delete</ion-delete-button>
+          <ion-option-button class="task-button-edit" ng-click="editTask(task, $index)">Edit</ion-delete-button>
         </div>
       </ion-item>
     </ion-list>

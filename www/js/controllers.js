@@ -1,9 +1,10 @@
 angular.module('tasks.list', [])
 
-.controller('TasksCtrl', function($scope, $ionicModal, $localstorage) {
+.controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate) {
 
 
   $scope.tasks = [];
+  $scope.i = -1;
 
   var setTasks = function(){
     var user = $localstorage.getObject('storage');
@@ -30,8 +31,10 @@ angular.module('tasks.list', [])
 
   // Called when the form is submitted
   $scope.submitTask = function(task) {
-    if (task.id != null)
-      $scope.updateTask(task);
+    if ($scope.i > -1) {
+      $scope.updateTask(task, $scope.i);
+      $scope.i = -1;
+    }
     else
       $scope.createTask(task);
   };
@@ -61,30 +64,31 @@ angular.module('tasks.list', [])
     $scope.tasks.push({
       title: task.title,
       due: temp,
-      important: task.priority,
+      important: task.important,
       complete: false,
     });
     $scope.taskModal.hide();
     task.title = "";
     task.due = "";
-    task.priority = false;
+    task.important = false;
     $localstorage.setObject('storage', {tasks: $scope.tasks});
   };
 
   $scope.removeTask = function(index) {
+    $ionicListDelegate.closeOptionButtons();
     $scope.tasks.splice(index, 1);
      $localstorage.setObject('storage', {tasks: $scope.tasks});
   };
 
   // Update task called if the task has an id
-  $scope.updateTask = function(task) {
-    $scope.tasks[task.id] = angular.copy(task);
+  $scope.updateTask = function(task, i) {
+    $scope.tasks[i] = angular.copy(task);
     $localstorage.setObject('storage', {tasks: $scope.tasks});  
     $scope.taskModal.hide();
     console.log($scope.tasks);
     task.title = "";
     task.due = "";
-    task.priority = false;
+    task.important = false;
   };
 
   // Open our new task modal
@@ -93,8 +97,10 @@ angular.module('tasks.list', [])
   };
 
   // Edit our task
-  $scope.editTask = function(task) {
-    $scope.task = task;
+  $scope.editTask = function(task, i) {
+    $ionicListDelegate.closeOptionButtons();
+    $scope.i = i;
+    $scope.task = angular.copy(task);
     $scope.taskModal.show();
   }
 

@@ -4,13 +4,24 @@
     }
     .task-prop-title {
         text-decoration: line-through;
-        color: grey;
+        color: $lightish;
     }
 }
-.task-status-complete-false {
+
+.task-status-complete-false.task-status-important-true {
     .task-prop-due {
         color: $energized;
     }
+}
+
+.task-button-edit {
+    background-color: $lightish;
+    color: $light;
+}
+
+.task-button-delete {
+    background-color: $assertive;
+    color: $light;
 }
 
 .task-prop-due {
@@ -74,7 +85,7 @@
 
 #emptyTask {
 
-    color: grey;
+    color: $lightish;
     vertical-align: center;
     text-align: center;
 
