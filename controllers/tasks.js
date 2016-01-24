@@ -20,14 +20,23 @@ angular.module('tasks.list', [])
 
 
   // Create and load the Modal
-  $ionicModal.fromTemplateUrl('templates/tasks/new-task-form.html', function(modal) {
+  $ionicModal.fromTemplateUrl('templates/tasks/task-form.html', function(modal) {
     $scope.taskModal = modal;
   }, {
     scope: $scope,
-    animation: 'slide-in-up'
+    animation: 'slide-in-up',
+    focusFirstInput: true
   });
 
   // Called when the form is submitted
+  $scope.submitTask = function(task) {
+    if (task.id != null)
+      $scope.updateTask(task);
+    else
+      $scope.createTask(task);
+  };
+
+  // Called if the task has no id
   $scope.createTask = function(task) {
 
     var temp = '';
@@ -55,7 +64,6 @@ angular.module('tasks.list', [])
       important: task.priority,
       complete: false,
     });
-    console.log($scope.tasks);
     $scope.taskModal.hide();
     task.title = "";
     task.due = "";
@@ -66,12 +74,29 @@ angular.module('tasks.list', [])
   $scope.removeTask = function(index) {
     $scope.tasks.splice(index, 1);
      $localstorage.setObject('storage', {tasks: $scope.tasks});
-  }
+  };
+
+  // Update task called if the task has an id
+  $scope.updateTask = function(task) {
+    $scope.tasks[task.id] = angular.copy(task);
+    $localstorage.setObject('storage', {tasks: $scope.tasks});  
+    $scope.taskModal.hide();
+    console.log($scope.tasks);
+    task.title = "";
+    task.due = "";
+    task.priority = false;
+  };
 
   // Open our new task modal
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
+
+  // Edit our task
+  $scope.editTask = function(task) {
+    $scope.task = task;
+    $scope.taskModal.show();
+  }
 
   // Close the new task modal
   $scope.closeNewTask = function() {
