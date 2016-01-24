@@ -9750,7 +9750,8 @@ a.button {
   color: #fff; }
 
 .task-prop-due .task-prop-important {
-  padding-left: 5px; }
+  padding-left: 7px;
+  font-size: 125%; }
 
 .task-prop-title {
   display: -webkit-box;
