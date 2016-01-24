@@ -1,7 +1,5 @@
 angular.module('tasks.list', [])
-
-
-.controller('TasksCtrl', function($scope) {
+.controller('TasksCtrl', function($scope, $ionicModal) {
   $scope.tasks = [
     {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
   ];
@@ -47,5 +45,4 @@ angular.module('tasks.list', [])
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
   };
->>>>>>> origin/master
 });
