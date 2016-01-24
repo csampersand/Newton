@@ -54,5 +54,3 @@ angular.module('tasks.list', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
-
-slkdfjsdlfk
