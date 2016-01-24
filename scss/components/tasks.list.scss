@@ -17,10 +17,10 @@
 }
 
 .ion-ios-checkmark {
-    color: #5A9C69;
+    color: $balanced;
 }
 
-.important{
+.important {
     color: $energized;
 }
 
@@ -56,12 +56,6 @@
     &:before {
         font-size:170%;
         padding-right: 7px;
-    }
-    .task-status-incomplete {
-
-    }
-    .task-status-complete {
-
     }
 }
 

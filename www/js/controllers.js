@@ -5,13 +5,9 @@ angular.module('tasks.list', [])
     {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
   ];
 
-  $scope.toggleComplete = function(index) {
-    
-    if($scope.tasks[index].complete == true)
-      $scope.tasks[index].complete = false;
-    else
-       $scope.tasks[index].complete = true;
-
+  // toggle modal being complete
+  $scope.toggleComplete = function(task) {
+      task.complete = !task.complete;
   }
 
 
