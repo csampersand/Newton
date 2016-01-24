@@ -5,12 +5,14 @@
 
     <ion-list>      
       <ion-item ng-repeat="task in tasks" href="#/app/playlists/{{playlist.id}}">
-        <i id="{{task.id}}" class="task-status {{task.complete ? 'ion-ios-checkmark' : 'ion-ios-circle-outline' }}" ng-click="toggleComplete(task)" ></i>
-        <span class="task-title">{{task.title}}</span>
-        <scan class="item-note" ng-class="{important: {{task.important}} == true && task.complete == false}"> 
-            {{task.due}} &nbsp;
-        <i class="ion-alert-circled" ng-show="task.important"></i>
-        </scan>
+        <div class="task-status-complete-{{task.complete}}">
+          <i class="task-status-complete {{task.complete ? 'ion-ios-checkmark' : 'ion-ios-circle-outline' }}" ng-click="toggleComplete(task)" ></i>
+          <span class="task-prop-title">{{task.title}}</span>
+          <span class="item-note task-prop-due task-status-important"> 
+            {{task.due}}
+            <i class="ion-alert-circled task-prop-important" ng-show="task.important"></i>
+          </span>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

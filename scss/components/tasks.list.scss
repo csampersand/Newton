@@ -1,4 +1,25 @@
-.task-title {    
+.task-status-complete-true {
+    .task-status-complete {
+        color: $balanced;
+    }
+    .task-prop-title {
+        text-decoration: line-through;
+        color: grey;
+    }
+}
+.task-status-complete-false {
+    .task-prop-due {
+        color: $energized;
+    }
+}
+
+.task-prop-due {
+    .task-prop-important {
+        padding-left: 5px;
+    }
+}
+
+.task-prop-title {    
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -16,15 +37,7 @@
     height: 100%;    
 }
 
-.ion-ios-checkmark {
-    color: $balanced;
-}
-
-.important {
-    color: $energized;
-}
-
-.item-note {
+.task-prop-due {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -52,7 +65,7 @@
     // line-height: 100%;
 }
 
-.task-status {
+.task-status-complete {
     &:before {
         font-size:170%;
         padding-right: 7px;
