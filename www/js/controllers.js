@@ -78,4 +78,13 @@ angular.module('tasks.list', [])
     $scope.taskModal.hide();
   };
 
+  $scope.doRefresh = function(){
+    $scope.$broadcast('scroll.refreshComplete');
+    for(var i = 0; i < $scope.tasks.length; i++){
+      if($scope.tasks[i].complete == true){
+        $scope.removeTask(i);
+      }
+    }
+  };
+
 });
