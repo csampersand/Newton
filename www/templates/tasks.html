@@ -1,11 +1,16 @@
 <ion-view view-title="Tasks">
   <ion-content>
-    <ion-list>
+
+    <h5 id="emptyTask" ng-hide="tasks.length == 0">You have no tasks to complete.</h5>
+
+    <ion-list>      
       <ion-item class="task-item" ng-repeat="task in tasks" href="#/app/playlists/{{playlist.id}}">
-        <i id="{{task.id}}" class="task-status task-status-incomplete ion-ios-circle-outline"></i>
+        <i id="{{task.id}}" class="task-status task-status-incomplete ion-ios-checkmark" ng-click="toggleComplete($index)" ng-show="task.complete" ></i>
+        <i id="{{task.id}}" class="task-status task-status-incomplete ion-ios-circle-outline" ng-click="toggleComplete($index)" ng-show="!task.complete" ></i>
         <span class="task-title">{{task.title}}</span>
-        <scan class="item-note">
-            {{task.due}}
+        <scan class="item-note" ng-class="{important: {{task.important}} == true && task.complete == false}"> 
+            {{task.due}} &nbsp;
+        <i class="ion-alert-circled" ng-show="task.important" ng-hide="task.complete || !task.important"></i>
         </scan>
       </ion-item>
     </ion-list>
