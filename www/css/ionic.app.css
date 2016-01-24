@@ -9730,3 +9730,7 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.task-status:before {
+  font-size: 170%;
+  padding-right: 7px; }

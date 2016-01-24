@@ -29,15 +29,15 @@ angular.module('starter', ['ionic', 'tasks.list'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'TasksCtrl'
   })
 
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.tasks', {
+      url: '/tasks',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/tasks.html',
+          controller: 'TasksCtrl'
         }
       }
     })
@@ -52,5 +52,5 @@ angular.module('starter', ['ionic', 'tasks.list'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/tasks');
 });
