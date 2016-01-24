@@ -103,10 +103,10 @@ angular.module('tasks.list', [])
 
   // Edit our task
   $scope.editTask = function(task, i) {
-   
     $ionicListDelegate.closeOptionButtons();
     $scope.i = i;
     $scope.task = angular.copy(task);
+    $scope.task.due = new Date(task.due);
     $scope.taskModal.show();
   }
 
