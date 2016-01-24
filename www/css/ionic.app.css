@@ -9795,7 +9795,7 @@ a.button {
   font-size: 170%;
   padding-right: 10px; }
 
-#emptyTask {
+.emptyTask {
   color: #cccccc;
   vertical-align: center;
   text-align: center; }

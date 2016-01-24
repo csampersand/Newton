@@ -39,11 +39,10 @@ angular.module('tasks.list', [])
       $scope.createTask(task);
   };
 
-  // Called if the task has no id
-  $scope.createTask = function(task) {
-
+  $scope.convert = function(day){
+    
     var temp = '';
-    var date = task.due;
+    var date = new Date(day); 
     var today = new Date();
     var weekday = new Array(7);
     weekday[0]=  "Sunday";
@@ -56,14 +55,20 @@ angular.module('tasks.list', [])
 
     if(date.getTime() < today.getTime() + 605000000){
       temp = weekday[date.getDay()];
-    } else {
+    } else{
       temp = date.toLocaleDateString();
     }
 
+    return temp;
+  }
+
+
+  // Called if the task has no id
+  $scope.createTask = function(task) {
 
     $scope.tasks.push({
       title: task.title,
-      due: temp,
+      due: task.due,
       important: task.important,
       complete: false,
     });
@@ -85,7 +90,7 @@ angular.module('tasks.list', [])
     $scope.tasks[i] = angular.copy(task);
     $localstorage.setObject('storage', {tasks: $scope.tasks});  
     $scope.taskModal.hide();
-    console.log($scope.tasks);
+
     task.title = "";
     task.due = "";
     task.important = false;
@@ -98,6 +103,7 @@ angular.module('tasks.list', [])
 
   // Edit our task
   $scope.editTask = function(task, i) {
+   
     $ionicListDelegate.closeOptionButtons();
     $scope.i = i;
     $scope.task = angular.copy(task);
