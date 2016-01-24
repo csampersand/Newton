@@ -4,7 +4,6 @@
 node_modules/
 platforms/
 plugins/
-node_modules/
 www/lib/*
 !www/lib/ionic
 www/css/ionic.app.css

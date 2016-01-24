@@ -84,6 +84,7 @@ angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionic
     $scope.newTask = function() {
         $scope.updating = false;
         $scope.taskModal.show();
+        $scope.task.due = new Date();
     };
     // Edit our task
     $scope.editTask = function(task) {
