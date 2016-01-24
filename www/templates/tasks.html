@@ -11,8 +11,8 @@
             {{convert(task.due)}}
             <i class="ion-alert-circled task-prop-important" ng-show="task.important"></i>
           </span>
-          <ion-option-button class="task-button-delete" ng-click="removeTask($index)">Delete</ion-delete-button>
-          <ion-option-button class="task-button-edit" ng-click="editTask(task, $index)">Edit</ion-delete-button>
+          <ion-option-button class="task-button-delete" ng-click="removeTask(task)">Delete</ion-delete-button>
+          <ion-option-button class="task-button-edit" ng-click="editTask(task)">Edit</ion-delete-button>
         </div>
       </ion-item>
     </ion-list>

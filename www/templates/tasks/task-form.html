@@ -2,7 +2,7 @@
 
   <!-- Modal header bar -->
   <ion-header-bar class="bar-secondary">
-    <h1 class="title">{{i != -1 ? 'Edit Task' : 'New Task'}}</h1>
+    <h1 class="title">{{updating ? 'Edit Task' : 'New Task'}}</h1>
     <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
   </ion-header-bar>
 
@@ -30,7 +30,7 @@
         </li>
       </div>
       <div class="padding">
-        <button type="submit" class="button button-block button-positive">{{i > -1 ? 'Update' : 'Create'}}</button>
+        <button type="submit" class="button button-block button-positive">{{updating ? 'Update' : 'Create'}}</button>
       </div>
     </form>
 
