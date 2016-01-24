@@ -1,6 +1,5 @@
 angular.module('tasks.list', [])
 
-
 .controller('TasksCtrl', function($scope, $ionicModal) {
   $scope.tasks = [
     {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
