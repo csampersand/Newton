@@ -9782,4 +9782,10 @@ a.button {
 #emptyTask {
   color: grey;
   vertical-align: center;
-  text-align: center; }
+  text-align: center; 
+}
+
+.task-status:before {
+  font-size: 170%;
+  padding-right: 7px; }
+

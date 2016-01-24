@@ -36,8 +36,10 @@ angular.module('starter', ['ionic', 'tasks.list'])
       url: '/tasks',
       views: {
         'menuContent': {
-          templateUrl: 'templates/tasks.html',
-          controller: 'TasksCtrl'
+          templateUrl: 'templates/tasks.html'
+        },
+        'rightNavButton': {
+          templateUrl: 'templates/tasks/new-task-button.html'
         }
       }
     })
