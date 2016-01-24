@@ -61,16 +61,7 @@ angular.module('starter', ['ionic', 'tasks.list', 'ionic.utils'])
         templateUrl: 'templates/settings.html'
       }
     }
-  })
-
-  .state('app.calendar', {
-    url: '/calendar',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/calendar.html'
-      }
-    }
-  });
+  });;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/tasks');
