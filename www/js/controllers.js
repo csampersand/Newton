@@ -1,6 +1,5 @@
 angular.module('tasks.list', [])
 
-<<<<<<< HEAD
 .controller('TasksCtrl', function($scope, $ionicModal, $localstorage) {
 
 
@@ -8,17 +7,11 @@ angular.module('tasks.list', [])
 
   var setTasks = function(){
     var user = $localstorage.getObject('storage');
-    $scope.tasks = user.tasks;
-
+    if (user.tasks != undefined)
+      $scope.tasks = user.tasks;
   }
 
   setTasks();
-=======
-.controller('TasksCtrl', function($scope, $ionicModal) {
-  $scope.tasks = [
-    {'id': 0, 'due': '', 'title': 'Assignment', 'complete': false, 'important': true}
-  ];
->>>>>>> taskList
 
   // toggle modal being complete
   $scope.toggleComplete = function(task) {
@@ -78,22 +71,21 @@ angular.module('tasks.list', [])
     $localstorage.setObject('storage', {tasks: $scope.tasks});
   };
 
-<<<<<<< HEAD
   $scope.removeTask = function(index) {
     $scope.tasks.splice(index, 1);
      $localstorage.setObject('storage', {tasks: $scope.tasks});
-  }
-=======
+  };
+
   // Update task called if the task has an id
   $scope.updateTask = function(task) {
     $scope.tasks[task.id] = angular.copy(task);
+    $localstorage.setObject('storage', {tasks: $scope.tasks});  
     $scope.taskModal.hide();
     console.log($scope.tasks);
     task.title = "";
     task.due = "";
     task.priority = false;
   };
->>>>>>> taskList
 
   // Open our new task modal
   $scope.newTask = function() {

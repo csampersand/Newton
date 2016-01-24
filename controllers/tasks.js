@@ -7,8 +7,8 @@ angular.module('tasks.list', [])
 
   var setTasks = function(){
     var user = $localstorage.getObject('storage');
-    $scope.tasks = user.tasks;
-
+    if (user.tasks != undefined)
+      $scope.tasks = user.tasks;
   }
 
   setTasks();
