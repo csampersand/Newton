@@ -1,8 +1,6 @@
 angular.module('tasks.list', [])
 
 .controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate) {
-
-
     $scope.tasks = [];
 
     var setTasks = function() {

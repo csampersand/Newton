@@ -39,7 +39,6 @@ angular.module('starter', ['ionic', 'tasks.list', 'ionic.utils'])
           templateUrl: 'templates/tasks.html'
         },
         'rightNavButton': {
-          abstract: true,
           templateUrl: 'templates/tasks/new-task-button.html'
         }
       }
