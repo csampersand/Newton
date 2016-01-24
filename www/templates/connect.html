@@ -1,5 +1,22 @@
-<ion-view view-title="Connect">
-  <ion-content>
-    <h5 class="emptyTask">Connect to Canvas</h5>
-  </ion-content>
+<ion-view view-title="Connect to Canvas">
+    <ion-content>
+    <form ng-submit="connect(token)">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-ios-gear placeholder-icon">
+                </i>
+                <input type="text" placeholder="Access Token" ng-model="token" />
+            </label>
+        </div>
+           <div class="padding" style="padding-top: 0;">
+        <button type="submit" class="button button-block button-balanced">Connect</button>
+      </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p>Newton can automatically pull your homework assignments and deadlines from Canvas. All you need to do is open your settings in Canvas and generate a new access token under <b>Approved Integrations</b>. </p>
+                <p>Paste that token here and your assignments will be loaded.</p>
+            </div>
+        </div>
+        </form>
+    </ion-content>
 </ion-view>

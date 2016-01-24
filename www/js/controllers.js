@@ -1,22 +1,36 @@
-angular.module('tasks.list', [])
+angular.module('canvas.connect', [])
 
-.controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate) {
+.config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+})
+
+.controller('ConnectCtrl', function($scope, $http) {
+    $scope.connect = function(token) {
+        console.log('fag');
+        $http.get('https://canvas.instructure.com/api/v1/courses?access_token=' + token)
+            .then(function(response) {
+                console.log(response);
+            });
+    };
+});
+
+// curl -H "Authorization: Bearer <ACCESS-TOKEN>" https://canvas.instructure.com/api/v1/courses
+// GET /api/v1/courses/:course_id/assignments
+angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate, $http) {
     $scope.tasks = [];
-
     var setTasks = function() {
         var user = $localstorage.getObject('storage');
-        if (user.tasks != undefined)
-            $scope.tasks = user.tasks;
+        if (user.tasks != undefined) $scope.tasks = user.tasks;
     }
-
     setTasks();
-
     // toggle modal being complete
     $scope.toggleComplete = function(task) {
         task.complete = !task.complete;
     }
-
-
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('templates/tasks/task-form.html', function(modal) {
         $scope.taskModal = modal;
@@ -25,17 +39,13 @@ angular.module('tasks.list', [])
         animation: 'slide-in-up',
         focusFirstInput: true
     });
-
     // Called when the form is submitted
     $scope.submitTask = function(task) {
         if ($scope.updating) {
             $scope.updateTask(task);
-        } else
-            $scope.createTask(task);
+        } else $scope.createTask(task);
     };
-
     $scope.convert = function(day) {
-
         var temp = '';
         var date = new Date(day);
         var today = new Date();
@@ -47,20 +57,15 @@ angular.module('tasks.list', [])
         weekday[4] = "Thursday";
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
-
         if (date.getTime() < today.getTime() + 605000000) {
             temp = weekday[date.getDay()];
         } else {
             temp = date.toLocaleDateString();
         }
-
         return temp;
     }
-
-
     // Called if the task has no id
     $scope.createTask = function(task) {
-
         $scope.tasks.push({
             title: task.title,
             due: task.due,
@@ -75,7 +80,6 @@ angular.module('tasks.list', [])
             tasks: $scope.tasks
         });
     };
-
     $scope.removeTask = function(task) {
         $ionicListDelegate.closeOptionButtons();
         var oldTasks = $scope.tasks;
@@ -87,26 +91,22 @@ angular.module('tasks.list', [])
             tasks: $scope.tasks
         });
     };
-
     // Update task called if the task has an id
     $scope.updateTask = function(task) {
         $localstorage.setObject('storage', {
             tasks: $scope.tasks
         });
         $scope.taskModal.hide();
-
         $scope.task = angular.copy(task);
         $scope.task.title = "";
         $scope.task.due = "";
         $scope.task.important = false;
     };
-
     // Open our new task modal
     $scope.newTask = function() {
         $scope.updating = false;
         $scope.taskModal.show();
     };
-
     // Edit our task
     $scope.editTask = function(task) {
         $scope.updating = true;
@@ -115,12 +115,10 @@ angular.module('tasks.list', [])
         $scope.task.due = new Date(task.due);
         $scope.taskModal.show();
     }
-
     // Close the new task modal
     $scope.closeNewTask = function() {
         $scope.taskModal.hide();
     };
-
     $scope.doRefresh = function() {
         $scope.$broadcast('scroll.refreshComplete');
         var oldTasks = $scope.tasks;
@@ -132,5 +130,4 @@ angular.module('tasks.list', [])
             tasks: $scope.tasks
         });
     };
-
 });
