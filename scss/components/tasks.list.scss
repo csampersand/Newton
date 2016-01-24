@@ -1,5 +1,5 @@
 .task-status-complete-true {
-    .task-status-complete {
+    .task-prop-complete {
         color: $balanced;
     }
     .task-prop-title {
@@ -65,7 +65,7 @@
     // line-height: 100%;
 }
 
-.task-status-complete {
+.task-prop-complete {
     &:before {
         font-size:170%;
         padding-right: 7px;
