@@ -1,0 +1,21 @@
+.task-title {
+
+}
+
+.task-item {
+    // float: left;
+    // line-height: 100%;
+}
+
+.task-status {
+    &:before {
+        font-size:170%;
+        padding-right: 7px;
+    }
+    .task-status-incomplete {
+
+    }
+    .task-status-complete {
+
+    }
+}

@@ -1,13 +1,12 @@
 <ion-view view-title="Tasks">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="task in tasks" href="#/app/playlists/{{playlist.id}}">
-        <p>
-            {{task.title}}
-        </p>
-        <p align="left">
+      <ion-item class="task-item" ng-repeat="task in tasks" href="#/app/playlists/{{playlist.id}}">
+        <i id="{{task.id}}" class="task-status task-status-incomplete ion-ios-circle-outline"></i>
+        <span class="task-title">{{task.title}}</span>
+        <scan class="item-note">
             {{task.due}}
-        </p>
+        </scan>
       </ion-item>
     </ion-list>
   </ion-content>
