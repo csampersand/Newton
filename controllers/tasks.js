@@ -24,7 +24,8 @@ angular.module('tasks.list', [])
     $scope.tasks.push({
       title: task.title,
       due: task.due,
-      priority: task.priority
+      important: task.priority,
+      complete: false,
     });
     console.log($scope.tasks);
     $scope.taskModal.hide();
