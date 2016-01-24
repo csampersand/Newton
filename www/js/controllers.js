@@ -3,24 +3,20 @@ angular.module('tasks.list', [])
 .controller('TasksCtrl', function($scope, $ionicModal, $localstorage) {
 
 
-  $scope.tasks = [
-    {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
-  ];
+  $scope.tasks = [];
 
-  var fish = function(){
+  var setTasks = function(){
     var user = $localstorage.getObject('storage');
     $scope.tasks = user.tasks;
 
-    console.log($localstorage.getObject('storage'));
   }
 
-  fish();
-  
+  setTasks();
 
   // toggle modal being complete
   $scope.toggleComplete = function(task) {
       task.complete = !task.complete;
-  };
+  }
 
 
   // Create and load the Modal
@@ -33,9 +29,29 @@ angular.module('tasks.list', [])
 
   // Called when the form is submitted
   $scope.createTask = function(task) {
+
+    var temp = '';
+    var date = task.due;
+    var today = new Date();
+    var weekday = new Array(7);
+    weekday[0]=  "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    if(date.getTime() < today.getTime() + 605000000){
+      temp = weekday[date.getDay()];
+    } else {
+      temp = date.toLocaleDateString();
+    }
+
+
     $scope.tasks.push({
       title: task.title,
-      due: task.due,
+      due: temp,
       important: task.priority,
       complete: false,
     });
@@ -50,7 +66,7 @@ angular.module('tasks.list', [])
   $scope.removeTask = function(index) {
     $scope.tasks.splice(index, 1);
      $localstorage.setObject('storage', {tasks: $scope.tasks});
-  };
+  }
 
   // Open our new task modal
   $scope.newTask = function() {
