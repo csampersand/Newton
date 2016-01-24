@@ -9731,7 +9731,20 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.task-title {
+.task-status-complete-true .task-status-complete {
+  color: #5A9C69; }
+
+.task-status-complete-true .task-prop-title {
+  text-decoration: line-through;
+  color: grey; }
+
+.task-status-complete-false .task-prop-due {
+  color: #ffc900; }
+
+.task-prop-due .task-prop-important {
+  padding-left: 5px; }
+
+.task-prop-title {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -9748,13 +9761,7 @@ a.button {
   left: 14%;
   height: 100%; }
 
-.ion-ios-checkmark {
-  color: #5A9C69; }
-
-.important {
-  color: #ffc900; }
-
-.item-note {
+.task-prop-due {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -9775,7 +9782,7 @@ a.button {
 .invisible {
   visibility: hidden !important; }
 
-.task-status:before {
+.task-status-complete:before {
   font-size: 170%;
   padding-right: 7px; }
 
