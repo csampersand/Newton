@@ -1,7 +1,7 @@
 <ion-view view-title="Tasks">
   <ion-content>
 
-    <h5 id="emptyTask" ng-hide="tasks.length == 0">You have no tasks to complete.</h5>
+    <h5 id="emptyTask" ng-hide="tasks.length() == 0">You have no tasks to complete.</h5>
 
     <ion-list>      
       <ion-item class="task-item" ng-repeat="task in tasks" href="#/app/playlists/{{playlist.id}}">
