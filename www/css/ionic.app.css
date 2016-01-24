@@ -9731,10 +9731,61 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.task-status:before {
-  font-size: 170%;
-  padding-right: 7px; }
+.task-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 14%;
+  height: 100%; }
+
+.ion-ios-checkmark {
+  color: #5A9C69; }
+
+.important {
+  color: #ffc900; }
+
+.item-note {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 7%;
+  font-size: 80%;
+  height: 100%; }
+
+.invisible {
+  visibility: hidden !important; }
 
 .task-status:before {
   font-size: 170%;
   padding-right: 7px; }
+
+#emptyTask {
+  color: grey;
+  vertical-align: center;
+  text-align: center; 
+}
+
+.task-status:before {
+  font-size: 170%;
+  padding-right: 7px; }
+

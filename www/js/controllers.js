@@ -1,13 +1,19 @@
 angular.module('tasks.list', [])
 
-.controller('TasksCtrl', function($scope, $ionicModal) {
-  // $scope.tasks = [];
-    $scope.tasks = [{
-      title: 'Test',
-      due: 'Jan 5',
-      priority: false
-    }];
-    console.log($scope.tasks);
+
+.controller('TasksCtrl', function($scope) {
+  $scope.tasks = [
+    {'id': 0, 'due': 'Monday', 'title': 'Assignment', 'complete': false, 'important': true}
+  ];
+
+  $scope.toggleComplete = function(index) {
+    
+    if($scope.tasks[index].complete == true)
+      $scope.tasks[index].complete = false;
+    else
+       $scope.tasks[index].complete = true;
+
+  }
 
 
   // Create and load the Modal
@@ -41,4 +47,5 @@ angular.module('tasks.list', [])
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
   };
+>>>>>>> origin/master
 });
