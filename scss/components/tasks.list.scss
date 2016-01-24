@@ -44,7 +44,7 @@
     align-items: center;
     position: absolute;
     top: 0;
-    left: 14%;
+    left: 48px;;
     height: 100%;    
 }
 
@@ -79,7 +79,7 @@
 .task-prop-complete {
     &:before {
         font-size:170%;
-        padding-right: 7px;
+        padding-right: 10px;
     }
 }
 
