@@ -27,22 +27,14 @@ angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionic
         var temp = '';
         var date = new Date(day);
         var today = new Date();
-        var weekday = new Array(7);
-        weekday[0] = "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
-        if (date.getTime() < today.getTime() + 605000000) {
+        var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        if (date.getTime() < today.getTime() + 7 * 24 * 60 * 60 * 1000 && date.getTime() > today.getTime()) {
             temp = weekday[date.getDay()];
         } else {
             temp = date.toLocaleDateString();
         }
         return temp;
     }
-    // Called if the task has no id
     $scope.createTask = function(task) {
         $scope.tasks.push({
             title: task.title,
@@ -84,7 +76,6 @@ angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionic
     $scope.newTask = function() {
         $scope.updating = false;
         $scope.taskModal.show();
-        $scope.task.due = new Date();
     };
     // Edit our task
     $scope.editTask = function(task) {
@@ -102,8 +93,8 @@ angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionic
         $scope.$broadcast('scroll.refreshComplete');
         var oldTasks = $scope.tasks;
         $scope.tasks = [];
-        angular.forEach(oldTasks, function(oldTask) {
-            if (oldTask != task) $scope.tasks.push(oldTask);
+        angular.forEach(oldTasks, function(task) {
+            if (!task.complete) $scope.tasks.push(task);
         });
         $localstorage.setObject('storage', {
             tasks: $scope.tasks
