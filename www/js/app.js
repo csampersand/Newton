@@ -49,6 +49,14 @@ angular.module('starter', ['ionic', 'tasks.list'])
         templateUrl: 'templates/connect.html'
       }
     }
+  })
+  .state('app.calendar', {
+    url: '/calendar',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/calendar.html'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

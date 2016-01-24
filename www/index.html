@@ -7,11 +7,14 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/ionic.app.min.css" rel="stylesheet">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media = 'print' rel="stylesheet">
+ 
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    
+    <!-- full calendar css -->
+    <link rel='stylesheet' href='fullcalendar.css' />
+
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -22,6 +25,12 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+
+    <!--full calendar -->
+    <script src='jquery.min.js'></script>
+    <script src='moment.min.js'></script>
+    <script src='fullcalendar.js'></script>
+
   </head>
 
   <body ng-app="starter">
