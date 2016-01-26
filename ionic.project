@@ -1,6 +1,12 @@
 {
   "name": "myApp",
   "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://canvas.instructure.com/api"
+    }
+  ],
   "gulpStartupTasks": [
     "sass",
     "scripts",

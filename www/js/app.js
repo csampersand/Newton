@@ -6,6 +6,14 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'tasks.list', 'ionic.utils', 'canvas.connect'])
 
+.constant('canvasApiEndpoint', {
+    url: 'http://localhost:8100/api'
+})
+// For the real endpoint we'd use this
+// .constant('canvasApiEndpoint', {
+//     url: 'https://canvas.instructure.com/api'
+// })
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
