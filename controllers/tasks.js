@@ -1,4 +1,4 @@
-angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate, $http) {
+angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionicModal, $localstorage, $ionicListDelegate, $timeout) {
     $scope.tasks = [];
     var setTasks = function() {
         var user = $localstorage.getObject('storage');
@@ -90,7 +90,9 @@ angular.module('tasks.list', []).controller('TasksCtrl', function($scope, $ionic
         $scope.taskModal.hide();
     };
     $scope.doRefresh = function() {
-        $scope.$broadcast('scroll.refreshComplete');
+        $timeout(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        }, 1000);
         var oldTasks = $scope.tasks;
         $scope.tasks = [];
         angular.forEach(oldTasks, function(task) {
