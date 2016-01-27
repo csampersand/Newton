@@ -1,6 +1,6 @@
 <ion-view view-title="Tasks">
   <ion-content>
-    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <ion-refresher on-refresh="doRefresh()" refreshing-icon="ion-checkmark-round"></ion-refresher>
     <h5 class="emptyTask" ng-hide="tasks.length">You have no tasks to complete.</h5>
     <ion-list>      
       <ion-item ng-repeat="task in tasks track by $index">
