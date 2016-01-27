@@ -11,7 +11,7 @@ angular.module('starter', ['ionic', 'tasks.list', 'ionic.utils', 'canvas.connect
 })
 // For the real endpoint we'd use this
 // .constant('canvasApiEndpoint', {
-//     url: 'https://canvas.instructure.com/api'
+//     url: 'https://canvas.instructure.com/api/v1'
 // })
 
 .run(function($ionicPlatform) {

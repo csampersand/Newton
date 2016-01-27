@@ -18,6 +18,7 @@ angular.module('canvas.connect', ['tasks.list'])
         .then(function(response) {
             angular.forEach(response.data, function(course) {
                 $scope.courses.push(course);
+                console.log(course.course_code); // Debugging
             });
             
             // Get assignments for each course
@@ -32,6 +33,7 @@ angular.module('canvas.connect', ['tasks.list'])
                 })
                 .then(function(response) {
                     angular.forEach(response.data, function(assignment) {
+                        console.log(assignment.name);
                         var due_at = new Date(assignment.due_at);
                         if (due_at > $scope.today) {
                             $scope.assignments.push(assignment);
@@ -41,7 +43,8 @@ angular.module('canvas.connect', ['tasks.list'])
                                 title: assignment.name,
                                 due: assignment.due_at,
                                 important: false,
-                                complete: false
+                                complete: false,
+                                url: assignment.url
                             };
                             $scope.createTask(task);
 
