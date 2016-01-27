@@ -7,7 +7,7 @@
 angular.module('starter', ['ionic', 'tasks.list', 'ionic.utils', 'canvas.connect'])
 
 .constant('canvasApiEndpoint', {
-    url: 'http://localhost:8100/api'
+    url: 'http://localhost:8100/api/v1'
 })
 // For the real endpoint we'd use this
 // .constant('canvasApiEndpoint', {
